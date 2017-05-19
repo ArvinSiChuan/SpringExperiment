@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="/SpringExperiment/js/jquery.min.js"></script>
+		<script src="/SpringExperiment/js/studentINFO.js"></script>
+	</head>
+
+	<body style="text-align: center;">
+		<div id="studentsINFO" style="text-align: center;"></div>
+		<div id="operations">
+			<input type="text" id="filter" placeholder="sno, sname or sdept" />
+			<input type="button" id="btn0" value="refresh list" />
+
+		</div>
+		<input href="#newStuBtn" id="newStuBtn" type="button" value="new student"></input>
+		<div id="newStuDiv" style="position: relative;" hidden="hidden" >
+			<form id="newStu" onsubmit="doAjaxSubmit()" >
+				<input id="sno" name="sno" type="number" placeholder="student number" />
+				<input id="sname" name="sname" type="text" placeholder="studnet name" />
+				<input id="sdept" name="sdept" type="number" placeholder="student dept" />
+			</form>
+		</div>
+
+		<!--
+        	作者：qiuyiqiang1995@foxmail.com
+        	时间：2017-05-17
+        	描述：Scripts
+        -->
+		<script>
+			$(document).ready(function() {
+				doStuListRefresh();
+				$('#btn0').click(function() {
+					doStuListRefresh();
+				});
+				$("#filter").keyup(function() {
+					var value=$("#filter").val();
+					doFilter(value);
+				})
+				$("#newStuBtn").click(function() {
+					$("#newStuDiv").toggle();
+				});
+				$("#newStu").focus(function() {
+					$("#newStuDiv").show();
+				}).blur(function() {
+					$("#newStuDiv").hide();
+				});
+			});
+		</script>
+	</body>
+
+</html>

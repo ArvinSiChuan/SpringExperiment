@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="/SpringExperiment/js/jquery.min.js"></script>
+	</head>
+
+	<body>
+		<div id="buttons">
+			<input type="button" id="btn0" value="testAjaxPOST" />
+		</div>
+		<div id="studentsINFO"></div>
+		<script>
+			$(document).ready(function() {
+				$("#studentsINFO").add("table");
+				$.getJSON("../student/stuview",function(data){
+					$.each(data,function(i,item){
+						$("#studentsINFO").text().append(item[i].sno);
+					})
+				})
+			});
+		</script>
+	</body>
+
+</html>
