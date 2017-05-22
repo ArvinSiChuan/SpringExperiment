@@ -86,7 +86,7 @@ public class StudentDAOImpl extends JdbcDaoSupport implements StudentDAO, RowMap
 		String snameKey = "%" + student.getSno() + "%";
 		String sdeptKey = "%" + student.getSno() + "%";
 		templet = getJdbcTemplate();
-		return templet.query("select sno,sname,sdept from students where sno like ? or sname like ? or sdept like ? ;",
+		return templet.query("select sno,sname,sdept from students where sno like ? or sname like ? or sdept like ?",
 				this, snoKey, snameKey, sdeptKey);
 	}
 

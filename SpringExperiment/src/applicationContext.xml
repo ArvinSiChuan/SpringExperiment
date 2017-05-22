@@ -16,17 +16,29 @@
 	</bean>	
 	<bean id="myLogger" class="com.springexperiment.beans.impl.StudentLoggerImpl"></bean>
 	<bean id="studentDAO" class="com.springexperiment.dao.impl.StudentDAOImpl">
-		<property name="DataSource" ref="dataSource"></property>
+		<property name="dataSource" ref="oracleDataSource"></property>
 	</bean>
 	<aop:aspectj-autoproxy></aop:aspectj-autoproxy>
 	
-	<bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource">
+	<bean id="mysqlDataSource" class="org.apache.commons.dbcp2.BasicDataSource">
 		<property name="driverClassName" value="com.mysql.jdbc.Driver"></property>
 		<property name="url" 
 			value="jdbc:mysql://localhost:3306/experiment?characterEncoding=utf8">
 		</property>
 		<property name="username" value="root"></property>
-		<property name="password" value="Nq2tkpy73y"></property>
+		<property name="password" value="Nq2tkpy73y">
+		</property>
+		<property name="initialSize" value="5"></property>
+		<property name="maxTotal" value="80"></property>
+	</bean>
+	
+	<bean id="oracleDataSource" class="org.apache.commons.dbcp2.BasicDataSource">
+		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"></property> 
+		<property name="url" 
+			value="jdbc:oracle:thin:@localhost:1521:orcl">
+		</property>
+		<property name="username" value="C##SCOTT_20141969"></property>
+		<property name="password" value="Pwd20141969"></property>		
 		<property name="initialSize" value="5"></property>
 		<property name="maxTotal" value="80"></property>
 	</bean>

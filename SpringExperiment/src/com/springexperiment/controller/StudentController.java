@@ -50,6 +50,15 @@ public class StudentController {
 		return "redirect:../all/";
 	}
 
+	@RequestMapping(value = "/stunew", method = RequestMethod.POST)
+	public @ResponseBody String newJsonStudent(@RequestBody Student student) {
+		System.out.println(student.getSname());
+		System.out.println(studentDAO.saveStudent(student));
+		ArrayList<Student> list = (ArrayList<Student>) studentDAO.queryAll();
+		String stuGson = new GsonBuilder().create().toJson(list);
+		return stuGson;
+	}
+
 	@RequestMapping(value = "/studetails", method = RequestMethod.DELETE)
 	public @ResponseBody String deleteStudent(@RequestBody Student student) {
 		studentDAO.deleteStudent(student);

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<link rel="stylesheet" href="../assets/css/main.css" />
+		<link rel="stylesheet" href="../assets/css/Customised.css" />
+	</head>
+
+	<body>
+		<div id="loginform" style="margin-top: 0;">
+			<form name="loginform" id="loginform" action="../Login.do" method="post" style="margin-top: 0;">
+
+				<div class="6u 12u$(small)">
+					<input type="text" name="name" id="name" placeholder="学号/工号/手机/邮箱" required="required" pattern="((\w)+(\.\w+)*@(\w)+((\.\w+)+))|([0-9]*)" title="请填写登录名:学号/工号/手机/邮箱" />
+				</div>
+
+				<div class="6u$ 12u$(small)">
+					<input type="password" name="pass" id="pass" placeholder="密码" required="required" title="请输入密码" />
+				</div>
+
+				<p>
+					<a href="../Exception/UnderConstruction.html">忘记密码？</a>
+				</p>
+
+				<div class="12u$">
+					<input type="submit" name="submit" id="submit" value="登录" />
+				</div>
+			</form>
+		</div>
+	</body>
+
+</html>

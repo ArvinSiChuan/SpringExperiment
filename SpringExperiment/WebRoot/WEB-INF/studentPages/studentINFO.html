@@ -17,10 +17,11 @@
 		</div>
 		<input href="#newStuBtn" id="newStuBtn" type="button" value="new student"></input>
 		<div id="newStuDiv" style="position: relative;" hidden="hidden" >
-			<form id="newStu" onsubmit="doAjaxSubmit()" >
+			<form id="newStu" action="#" onsubmit="return doAjaxSubmit();" >
 				<input id="sno" name="sno" type="number" placeholder="student number" />
 				<input id="sname" name="sname" type="text" placeholder="studnet name" />
 				<input id="sdept" name="sdept" type="number" placeholder="student dept" />
+				<input id="submitStu" name="submitStu" value="Submit" type="submit" />
 			</form>
 		</div>
 
@@ -28,27 +29,7 @@
         	作者：qiuyiqiang1995@foxmail.com
         	时间：2017-05-17
         	描述：Scripts
-        -->
-		<script>
-			$(document).ready(function() {
-				doStuListRefresh();
-				$('#btn0').click(function() {
-					doStuListRefresh();
-				});
-				$("#filter").keyup(function() {
-					var value=$("#filter").val();
-					doFilter(value);
-				})
-				$("#newStuBtn").click(function() {
-					$("#newStuDiv").toggle();
-				});
-				$("#newStu").focus(function() {
-					$("#newStuDiv").show();
-				}).blur(function() {
-					$("#newStuDiv").hide();
-				});
-			});
-		</script>
+       -->
 	</body>
 
 </html>
