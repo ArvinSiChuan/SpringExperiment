@@ -7,11 +7,13 @@ import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.AfterReturning;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
+import org.springframework.stereotype.Service;
 
 import com.springexperiment.beans.MyLogger;
 import com.springexperiment.dao.BaseDAO.DAOStatus;
 import com.springexperiment.entities.Student;
 
+@Service
 @Aspect
 public class StudentLoggerImpl implements MyLogger {
 

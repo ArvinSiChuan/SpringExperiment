@@ -15,8 +15,7 @@
 	http://www.springframework.org/schema/tx
 	http://www.springframework.org/schema/tx/spring-tx-4.3.xsd 
 	">
-	<bean id="student"  class="com.springexperiment.entities.Student">
-		<property name="sname" value="Arvin"></property>
+	<bean id="student"  class="com.springexperiment.entities.Student" p:sname="Arvin">
 		<property name="sno" value="20141969"></property>
 	</bean>	
 	<bean id="myLogger" class="com.springexperiment.beans.impl.StudentLoggerImpl"></bean>
