@@ -2,6 +2,8 @@ package com.springexperiment.controller;
 
 import java.util.ArrayList;
 
+import javax.annotation.Resource;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -21,7 +23,9 @@ import com.springexperiment.entities.Student;
 @RequestMapping("/student")
 public class StudentController {
 	private WebApplicationContext applicationContext = ContextLoader.getCurrentWebApplicationContext();
-	private StudentDAO studentDAO = applicationContext.getBean("studentDAO", StudentDAO.class);
+
+	@Resource(name = "studentDAO")
+	private StudentDAO studentDAO;
 
 	@RequestMapping(value = "/{studentid}/", method = RequestMethod.GET)
 	public String showStuINFO(@PathVariable("studentid") String sid, ModelMap map) {
