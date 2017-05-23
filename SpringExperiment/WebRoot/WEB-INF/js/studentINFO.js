@@ -1,22 +1,25 @@
 $(document).ready(function() {
-				doStuListRefresh();
-				$('#btn0').click(function() {
-					doStuListRefresh();
-				});
-				$("#filter").keyup(function() {
-					var value=$("#filter").val();
-					doFilter(value);
-				})
-				$("#newStuBtn").click(function() {
-					$("#newStuDiv").toggle();
-				});
-				$("#newStu").focus(function() {
-					$("#newStuDiv").show();
-				}).blur(function() {
-					$("#newStuDiv").hide();
-				});
-			});
-
+	doStuListRefresh();
+	$('#btn0').click(function() {
+		doStuListRefresh();
+	});
+	$("#filter").keyup(function() {
+		var value = $("#filter").val();
+		var historyValue = $("#filterHistory").val();
+		if(historyValue != value) {
+			doFilter(value);
+			$("#filterHistory").val(value);
+		}
+	})
+	$("#newStuBtn").click(function() {
+		$("#newStuDiv").toggle();
+	});
+	$("#newStu").focus(function() {
+		$("#newStuDiv").show();
+	}).blur(function() {
+		$("#newStuDiv").hide();
+	});
+});
 
 function doStuListRefresh() {
 	$.ajax({
@@ -39,7 +42,7 @@ function doStuListRefresh() {
 }
 
 function doTableRefresh(data) {
-	
+
 	$("#studentsINFO").html("<table style='margin:auto;text-align:center;'><tr><th>SNo</th><th>SName</th><th>SDept</th></tr></table>");
 	$.each(data, function(i, item) {
 		$("#studentsINFO").find("tr:last").after("<tr id='" + item.sno + "'>" +
@@ -115,12 +118,24 @@ function doAjaxSubmit() {
 
 		success: function(data) {
 			doTableRefresh(data);
-			$("#" + sno + "").animate({opacity: '0.2'}, "slow")
-							 .animate({opacity: '1'}, "slow")
-							 .animate({opacity: '0.2'}, "slow")
-							 .animate({opacity: '1'}, "slow")
-							 .animate({opacity: '0.2'}, "slow")
-							 .animate({opacity: '1'}, "slow");
+			$("#" + sno + "").animate({
+					opacity: '0.2'
+				}, "slow")
+				.animate({
+					opacity: '1'
+				}, "slow")
+				.animate({
+					opacity: '0.2'
+				}, "slow")
+				.animate({
+					opacity: '1'
+				}, "slow")
+				.animate({
+					opacity: '0.2'
+				}, "slow")
+				.animate({
+					opacity: '1'
+				}, "slow");
 		},
 		error: function() {
 			alert("error");

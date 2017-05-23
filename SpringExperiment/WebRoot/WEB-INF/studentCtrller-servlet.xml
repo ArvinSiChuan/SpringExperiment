@@ -15,6 +15,7 @@
 	
 	<bean id="springViewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 			<property name="prefix" value="/WEB-INF/studentPages/"></property>
+			<property name="suffix" value=".jsp"></property>
 	</bean>
 	
 	<mvc:annotation-driven>
@@ -25,8 +26,9 @@
         	</mvc:message-converters>
 	</mvc:annotation-driven>
 	<mvc:resources location="/WEB-INF/studentPages/" mapping="/html/*"></mvc:resources>
+	<mvc:resources location="/WEB-INF/login/" mapping="/login/*"></mvc:resources> 
 	<!-- <mvc:resources mapping="/html/*" location="/WEB-INF/studentPages/"></mvc:resources> -->
 	<mvc:resources location="/WEB-INF/js/" mapping="/js/*"></mvc:resources>
-	
+	<mvc:resources location="/WEB-INF/css/" mapping="/css/*"></mvc:resources>
 	
 </beans>

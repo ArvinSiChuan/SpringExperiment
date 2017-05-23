@@ -15,14 +15,15 @@
 	http://www.springframework.org/schema/tx
 	http://www.springframework.org/schema/tx/spring-tx-4.3.xsd 
 	">
+	<aop:aspectj-autoproxy/>
+	
+	
 	<bean id="student"  class="com.springexperiment.entities.Student" p:sname="Arvin">
 		<property name="sno" value="20141969"></property>
 	</bean>	
-	<bean id="myLogger" class="com.springexperiment.beans.impl.StudentLoggerImpl"></bean>
 	<bean id="studentDAO" class="com.springexperiment.dao.impl.StudentDAOImpl">
 		<property name="dataSource" ref="mysqlDataSource"></property>
 	</bean>
-	<aop:aspectj-autoproxy></aop:aspectj-autoproxy>
 	
 	<bean id="mysqlDataSource" class="org.apache.commons.dbcp2.BasicDataSource">
 		<property name="driverClassName" value="com.mysql.jdbc.Driver"></property>
@@ -50,4 +51,5 @@
 	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager"  p:dataSource-ref="mysqlDataSource"></bean>
 	
 	<tx:annotation-driven transaction-manager="transactionManager"/>
+	
 </beans>

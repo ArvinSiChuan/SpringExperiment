@@ -1,4 +1,4 @@
-package com.springexperiment.beans.anthHandlers;
+package com.springexperiment.beans.authHandlers;
 
 import java.io.IOException;
 
@@ -8,7 +8,9 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.security.core.Authentication;
 import org.springframework.security.web.authentication.logout.SimpleUrlLogoutSuccessHandler;
+import org.springframework.stereotype.Service;
 
+@Service
 public class LogOutSuccessHandler extends SimpleUrlLogoutSuccessHandler {
 
 	@Override

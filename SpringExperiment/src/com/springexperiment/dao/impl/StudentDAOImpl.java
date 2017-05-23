@@ -7,13 +7,11 @@ import java.util.List;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.support.JdbcDaoSupport;
-import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.springexperiment.dao.StudentDAO;
 import com.springexperiment.entities.Student;
 
-@Repository
 public class StudentDAOImpl extends JdbcDaoSupport implements StudentDAO, RowMapper<Student> {
 	private JdbcTemplate templet = getJdbcTemplate();
 	private String querySql = "select sno,sname,sdept from students where 1=1 ";
