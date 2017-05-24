@@ -42,7 +42,6 @@ function doStuListRefresh() {
 }
 
 function doTableRefresh(data) {
-
 	$("#studentsINFO").html("<table style='margin:auto;text-align:center;'><tr><th>SNo</th><th>SName</th><th>SDept</th></tr></table>");
 	$.each(data, function(i, item) {
 		$("#studentsINFO").find("tr:last").after("<tr id='" + item.sno + "'>" +
@@ -61,11 +60,13 @@ function doTableRefresh(data) {
 }
 
 function doStuDelete(sno) {
+	var headerToken = getHeaderToken();
 	$.ajax({
 		url: '../student/studetails',
 		type: 'DELETE',
 		async: true,
 		dataType: 'json',
+		headers:headerToken,
 		contentType: 'application/json;charset:utf-8;',
 		data: "{'sno':'" + sno + "'}",
 
@@ -101,6 +102,7 @@ function doFilter(filteKey) {
 }
 
 function doAjaxSubmit() {
+	var headerToken=getHeaderToken();
 	var tempData = $("#newStu").serializeArray();
 	var stuData = {};
 	for(var item in tempData) {
@@ -111,6 +113,7 @@ function doAjaxSubmit() {
 	$.ajax({
 		url: '../student/stunew',
 		type: 'POST',
+		headers:headerToken,
 		async: true,
 		dataType: 'json',
 		contentType: 'application/json;charset:utf-8;',
@@ -142,4 +145,13 @@ function doAjaxSubmit() {
 		}
 	});
 	return false;
+}
+
+function getHeaderToken() {
+	var header = $("meta[name='_csrf_header']").attr("content");
+	var token = $("meta[name='_csrf']").attr("content");
+	console.log(header);
+	var headerToken = {"X-CSRF-TOKEN":token};
+	console.log(headerToken);
+	return headerToken;
 }

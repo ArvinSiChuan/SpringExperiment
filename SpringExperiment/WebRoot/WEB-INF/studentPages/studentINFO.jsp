@@ -4,7 +4,8 @@
 <html>
 
 	<head>
-		<meta charset="UTF-8">
+		<meta charset="UTF-8"/>
+		<security:csrfMetaTags/>
 		<title></title>
 		<script src="/SpringExperiment/js/jquery.min.js"></script>
 		<script src="/SpringExperiment/js/studentINFO.js"></script>
