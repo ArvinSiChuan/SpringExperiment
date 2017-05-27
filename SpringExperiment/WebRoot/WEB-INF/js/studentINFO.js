@@ -49,14 +49,9 @@ function doTableRefresh(data) {
 			"<td>" + item.sname + "</td>" +
 			"<td>" + item.sdept + "</td>" +
 			"<td><input type='button' value='delete' onclick='doStuDelete(" + item.sno + ")' /></td></tr>");
-		$("#studentsINFO").find("tr:last").animate({
-			fontSize: "+=1em"
-		});
 
-		$("#studentsINFO").find("tr:last").animate({
-			fontSize: "-=1em"
-		});
 	});
+	doTwinkleAnimate($("#studentsINFO"), 3);
 }
 
 function doStuDelete(sno) {
@@ -66,7 +61,7 @@ function doStuDelete(sno) {
 		type: 'DELETE',
 		async: true,
 		dataType: 'json',
-		headers:headerToken,
+		headers: headerToken,
 		contentType: 'application/json;charset:utf-8;',
 		data: "{'sno':'" + sno + "'}",
 
@@ -102,7 +97,7 @@ function doFilter(filteKey) {
 }
 
 function doAjaxSubmit() {
-	var headerToken=getHeaderToken();
+	var headerToken = getHeaderToken();
 	var tempData = $("#newStu").serializeArray();
 	var stuData = {};
 	for(var item in tempData) {
@@ -113,7 +108,7 @@ function doAjaxSubmit() {
 	$.ajax({
 		url: '../student/stunew',
 		type: 'POST',
-		headers:headerToken,
+		headers: headerToken,
 		async: true,
 		dataType: 'json',
 		contentType: 'application/json;charset:utf-8;',
@@ -121,37 +116,11 @@ function doAjaxSubmit() {
 
 		success: function(data) {
 			doTableRefresh(data);
-			$("#" + sno + "").animate({
-					opacity: '0.2'
-				}, "slow")
-				.animate({
-					opacity: '1'
-				}, "slow")
-				.animate({
-					opacity: '0.2'
-				}, "slow")
-				.animate({
-					opacity: '1'
-				}, "slow")
-				.animate({
-					opacity: '0.2'
-				}, "slow")
-				.animate({
-					opacity: '1'
-				}, "slow");
+			doTwinkleAnimate($("#" + sno + ""), 3);
 		},
 		error: function() {
 			alert("error");
 		}
 	});
 	return false;
-}
-
-function getHeaderToken() {
-	var header = $("meta[name='_csrf_header']").attr("content");
-	var token = $("meta[name='_csrf']").attr("content");
-	console.log(header);
-	var headerToken = {"X-CSRF-TOKEN":token};
-	console.log(headerToken);
-	return headerToken;
 }

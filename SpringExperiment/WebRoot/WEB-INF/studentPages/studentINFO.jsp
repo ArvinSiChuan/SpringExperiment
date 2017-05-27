@@ -8,6 +8,7 @@
 		<security:csrfMetaTags/>
 		<title></title>
 		<script src="/SpringExperiment/js/jquery.min.js"></script>
+		<script src="/SpringExperiment/js/myUtils.js"></script>
 		<script src="/SpringExperiment/js/studentINFO.js"></script>
 	</head>
 

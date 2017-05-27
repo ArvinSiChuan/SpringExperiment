@@ -13,7 +13,7 @@
 
 	
 	<http auto-config="true"  create-session="always"  use-expressions="true" disable-url-rewriting="true" >
-			<form-login  login-page="/index.jsp"  login-processing-url="/login/" />
+			<form-login  login-page="/index.jsp"  login-processing-url="/login/"  default-target-url="/student/stuview" always-use-default-target="true"/>
 			<intercept-url pattern="/student/**" access="hasRole('USER')"/>
 			<logout logout-url="/logout/" logout-success-url="/index.jsp" invalidate-session="true"/>
 	</http>
